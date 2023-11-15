@@ -14,7 +14,7 @@ where P: AsRef<Path>, {
     Ok(BufReader::new(file).lines())
 }
 
-fn loop_rango() -> u32{
+fn loop_rango() -> i32{
     loop{
         println!("tienes para escoger 4 numeros. \nn1: .\nn2: .\nn3: .\nn4: .\n ");
         let numero = utiles::texto_numero("pregunta".to_string());
@@ -25,7 +25,7 @@ fn loop_rango() -> u32{
     }
 }
 
-fn print_tipo_columna(numero:u32) -> (){
+fn print_tipo_columna(numero:i32) -> (){
     match numero{
         1 => println!("La cantidad de pokemon de tipo agua que hay en la base de datos es: "),
         2 => println!("La cantidad de legendarios que hay dentro de la base de datos es: "),
@@ -39,11 +39,11 @@ fn print_tipo_columna(numero:u32) -> (){
 
 fn pregunta1() -> () {
     let mut contador_lineas = 0;
+    let mut acum = 0;
     //PARA ENTREGA, CAMBIAR EL NOMBRE DEL ARCHIVOOOOOOOO
     if let Ok(lines) = read_lines("./data_test.txt") {
 
         for line in lines {
-            let mut arreglo_provisional: [String;3] = [String::new(),String::new(),String::new()];
 
             if let Ok(ip) = line {
                 let ip_copy = ip.clone();
@@ -53,7 +53,19 @@ fn pregunta1() -> () {
 
                 for s in split {
                     //CUERPO DEL EJERCICIO
-
+                    if contador_columnas == 2  && contador_lineas >= 1 {
+                        let s = s.to_lowercase();
+                        if "water" == s{
+                            println!("{}",s);
+                            acum += 1;
+                        }
+                    }
+                    if contador_columnas == 3 && contador_lineas >= 1 {
+                        println!("entra a posicion 2 {}",s);
+                        if "water" == s.trim().to_lowercase(){
+                            acum += 1;
+                        }
+                    }
                     contador_columnas += 1;
 
                 }
@@ -64,13 +76,13 @@ fn pregunta1() -> () {
         }
     }
 //INGRESAR ACUMULADOR AQUI DENTRO
-    println!("{:?}", );
+    println!("el acumulador vale {}", acum );
 
 }
-
+ 
 fn pregunta2() -> () {
-
     let mut contador_lineas = 0;
+    let mut acumulador = 0;
     //PARA ENTREGA, CAMBIAR EL NOMBRE DEL ARCHIVOOOOOOOO
     if let Ok(lines) = read_lines("./data_test.txt") {
 
@@ -85,7 +97,13 @@ fn pregunta2() -> () {
 
                 for s in split {
                     //CUERPO DEL EJERCICIO
-
+                    if contador_columnas == 12 && contador_lineas >= 1 {
+                        let s = s.to_lowercase();
+                        println!("entra {}",s);
+                        if "true" == s{
+                            acumulador += 1;
+                        } 
+                    }
                     contador_columnas += 1;
 
                 }
@@ -96,10 +114,10 @@ fn pregunta2() -> () {
         }
     }
 //INGRESAR ACUMULADOR AQUI DENTRO
-    println!("{:?}", );
+    println!("El acumulador es: {}",acumulador );
 }
-
-fn pregunta3() -> {
+/*
+fn pregunta3() -> () {
 
     let mut contador_lineas = 0;
     //PARA ENTREGA, CAMBIAR EL NOMBRE DEL ARCHIVOOOOOOOO
@@ -162,6 +180,8 @@ fn pregunta4() -> () {
 
 
 }
+ */
+
 
 
 fn todo_proceso() -> () {
@@ -176,6 +196,8 @@ fn todo_proceso() -> () {
         pregunta2();
         return;
     }
+}
+/* 
     if pregunta == 3{
         pregunta3();
         return;
@@ -185,6 +207,7 @@ fn todo_proceso() -> () {
         return;
     }
 }
+*/
 
 
 
