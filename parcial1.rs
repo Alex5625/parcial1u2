@@ -245,24 +245,25 @@ fn pregunta4() -> () {
 
 
 fn todo_proceso() -> () {
+    loop {
+        let pregunta = loop_rango();
+        if pregunta == 1{
+            pregunta1();
+        }
+        if pregunta == 2{
+            pregunta2();
+        }
 
-    let pregunta = loop_rango();
-    if pregunta == 1{
-        pregunta1();
-        return;
-    }
-    if pregunta == 2{
-        pregunta2();
-        return;
-    }
-
-    if pregunta == 3{
-        pregunta3();
-        return;
-    }
-    if pregunta == 4{
-        pregunta4();
-        return;
+        if pregunta == 3{
+            pregunta3();
+        }
+        if pregunta == 4{
+            pregunta4();
+        }
+        println!("\nDesea salir del programa?");
+        if utiles::si_no(){
+            break;
+        }
     }
 }
 
