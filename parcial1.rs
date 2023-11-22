@@ -1,3 +1,6 @@
+
+// INTEGRANTES: SOFIA MIERES, IGNACIO MORALES Y ALEXIS HERNANDEZ
+
 use std::io::BufReader;
 use std::io::{self, BufRead};
 use std::path::Path;
